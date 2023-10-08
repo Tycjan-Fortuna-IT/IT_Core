@@ -1,6 +1,6 @@
 project "Core"
     kind "StaticLib"
-    
+
     language "C++"
     cppdialect "C++20"
 
@@ -13,8 +13,12 @@ project "Core"
     targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
     objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
 
+    pchheader "pch.hpp"
+	pchsource "src/pch.cpp"
+
     defines {
         "CORE_CONSOLE_BUILD",
+        "SPDLOG_COMPILED_LIB",
     }
 
     files {
@@ -34,11 +38,17 @@ project "Core"
         "src"
     }
 
-    externalincludedirs {}
+    externalincludedirs {
+        "%{IncludeDir.SPDLOG}"
+    }
 
-    links {}
+    links {
+        "spdlog"
+    }
 
-    libdirs {}
+    libdirs {
+        "%{LibDir.SPDLOG}"
+    }
 
     postbuildcommands {}
 
@@ -67,5 +77,5 @@ project "Core"
         optimize "speed"
 
     group "Dependencies"
-
+        include "Core/vendor/spdlog"
     group ""

@@ -1,3 +1,12 @@
 [submodule "vendor/SPDLOG"]
 	path = vendor/SPDLOG
 	url = https://github.com/Tycjan-Fortuna-IT/spdlog.git
+[submodule "vendor/GLAD"]
+	path = vendor/GLAD
+	url = https://github.com/Tycjan-Fortuna-IT/glad.git
+[submodule "vendor/GLFW"]
+	path = vendor/GLFW
+	url = https://github.com/Tycjan-Fortuna-IT/glfw.git
+[submodule "vendor/ImGui"]
+	path = vendor/ImGui
+	url = https://github.com/Tycjan-Fortuna-IT/imgui.git

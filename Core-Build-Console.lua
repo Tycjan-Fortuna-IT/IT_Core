@@ -19,6 +19,7 @@ project "Core"
     defines {
         "CORE_CONSOLE_BUILD",
         "SPDLOG_COMPILED_LIB",
+        "_CRT_SECURE_NO_WARNINGS",
     }
 
     files {

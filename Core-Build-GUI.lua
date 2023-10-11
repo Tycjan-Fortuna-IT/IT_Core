@@ -52,12 +52,14 @@ project "Core"
         "spdlog",
         "GLFW",
         "GLAD",
+        "ImGui",
     }
 
     libdirs {
         "%{LibDir.SPDLOG}",
         "%{LibDir.GLAD}",
         "%{LibDir.GLFW}",
+        "%{LibDir.ImGui}",
     }
 
     postbuildcommands {}
@@ -90,4 +92,5 @@ project "Core"
         include "Core/vendor/spdlog"
         include "Core/vendor/GLAD"
         include "Core/vendor/GLFW"
+        include "Core/vendor/ImGui"
     group ""

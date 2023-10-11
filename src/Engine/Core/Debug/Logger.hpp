@@ -44,6 +44,12 @@
     #define APP_CRITICAL(...)     ::Core::Logger::GetAppLogger()->critical(__VA_ARGS__)
 #endif
 
+#ifdef ENABLE_ASSERTS
+    #define ASSERT(...) // TODO: Implement this
+#else
+    #define ASSERT(...)
+#endif
+
 namespace Core {
     class Logger final {
     public:

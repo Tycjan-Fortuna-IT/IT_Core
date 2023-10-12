@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
 
+#include "Engine/Core/Layer.hpp"
+#include "Engine/Core/LayerStack.hpp"
+
 int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv);
 
 namespace Core {
@@ -24,32 +27,30 @@ namespace Core {
 
     class Application {
     public:
-
-        Application(const ApplicationSpecification& specification);
-        virtual ~Application() = default;
+        explicit Application(const ApplicationSpecification& specification);
+        virtual ~Application();
 
         Application(const Application& other) = delete;
         Application(Application&& other) = delete;
 
-        const ApplicationSpecification& GetSpecification() { return m_Specification; }
-        bool IsRunning() const { return m_Running; }
+        void PushLayer(Layer* layer);
+
+        const ApplicationSpecification& GetSpecification() const { return m_Specification; }
 
         static Application& Get() { return *s_Instance; }
-
-        void Close();
 
     protected:
 
         ApplicationSpecification m_Specification;
-        bool m_Running{ true };
 
     private:
-
         void Run();
 
         static Application* s_Instance;
 
-        friend int ::main([[maybe_unused]] int argc, [[maybe_unused]] char** argv);
+        LayerStack m_LayerStack;
+
+        friend int ::main(int argc, char** argv);
     };
 
     Application* CreateApplication([[maybe_unused]] int argc, [[maybe_unused]] char** argv);

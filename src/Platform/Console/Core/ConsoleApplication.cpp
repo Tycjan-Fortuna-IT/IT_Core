@@ -9,18 +9,23 @@ namespace Core {
     Application::Application(const ApplicationSpecification& specification)
         : m_Specification(specification) {
 
-        ASSERT(!s_Instance, "Application already exists!");
+        ASSERT(!s_Instance, "Application already exists!")
         CORE_TRACE("Creating application...");
 
         s_Instance = this;
+    }
 
+    Application::~Application() {
+        
     }
 
     void Application::Run() {
-
+        for (Layer* layer : m_LayerStack) {
+            layer->OnAttach();
+        }
     }
 
-    void Application::Close() {
-
+    void Application::PushLayer(Layer* layer) {
+        m_LayerStack.PushLayer(layer);
     }
 }

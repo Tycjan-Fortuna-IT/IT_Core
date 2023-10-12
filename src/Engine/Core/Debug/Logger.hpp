@@ -2,6 +2,8 @@
 
 #include <memory>
 
+#include "Engine/Core/Base.hpp"
+
 #include <spdlog/spdlog.h>
 #include "spdlog/sinks/daily_file_sink.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
@@ -44,8 +46,17 @@
     #define APP_CRITICAL(...)     ::Core::Logger::GetAppLogger()->critical(__VA_ARGS__)
 #endif
 
+#ifdef CORE_PLATFORM_WINDOWS
+    #define DEBUG_BREAK() __debugbreak()
+#elif defined(CORE_PLATFORM_LINUX)
+    #include <signal.h>
+    #define DEBUG_BREAK() raise(SIGTRAP)
+#else
+    #error "Platform not supported!"
+#endif
+
 #ifdef ENABLE_ASSERTS
-    #define ASSERT(...) // TODO: Implement this
+    #define ASSERT(check, ...)    { if (!(check)) { CORE_CRITICAL(__VA_ARGS__); DEBUG_BREAK(); } }
 #else
     #define ASSERT(...)
 #endif

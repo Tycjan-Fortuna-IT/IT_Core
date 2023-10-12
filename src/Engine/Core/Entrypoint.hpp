@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Debug/Logger.hpp"
 #include "Engine/Core/Application.hpp"
 

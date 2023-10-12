@@ -22,6 +22,8 @@ project "Core"
         "GLFW_INCLUDE_NONE",
         "IMGUI_DEFINE_MATH_OPERATORS",
         "_CRT_SECURE_NO_WARNINGS",
+        "ENABLE_ASSERTS",
+        "GLM_ENABLE_EXPERIMENTAL",
     }
 
     files {
@@ -46,6 +48,8 @@ project "Core"
         "%{IncludeDir.GLAD}",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.ImGui}",
+        "%{IncludeDir.GLM}",
+        "%{IncludeDir.Icons}",
     }
 
     links {

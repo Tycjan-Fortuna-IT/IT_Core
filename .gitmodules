@@ -10,3 +10,6 @@
 [submodule "vendor/ImGui"]
 	path = vendor/ImGui
 	url = https://github.com/Tycjan-Fortuna-IT/imgui.git
+[submodule "vendor/GLM"]
+	path = vendor/GLM
+	url = https://github.com/g-truc/glm.git

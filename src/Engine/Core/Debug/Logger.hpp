@@ -21,29 +21,29 @@
     #define APP_ERROR(...)        ::Core::Logger::GetAppLogger()->error(__VA_ARGS__)
     #define APP_CRITICAL(...)     ::Core::Logger::GetAppLogger()->critical(__VA_ARGS__)
 #elif CORE_RELEASE
-    #define CORE_TRACE(...)       
-    #define CORE_INFO(...)        
+    #define CORE_TRACE(...)
+    #define CORE_INFO(...)
     #define CORE_WARN(...)        ::Core::Logger::GetCoreLogger()->warn(__VA_ARGS__)
     #define CORE_ERROR(...)       ::Core::Logger::GetCoreLogger()->error(__VA_ARGS__)
     #define CORE_CRITICAL(...)    ::Core::Logger::GetCoreLogger()->critical(__VA_ARGS__)
 
-    #define APP_TRACE(...)        
-    #define APP_INFO(...)         
+    #define APP_TRACE(...)
+    #define APP_INFO(...)
     #define APP_WARN(...)         ::Core::Logger::GetAppLogger()->warn(__VA_ARGS__)
     #define APP_ERROR(...)        ::Core::Logger::GetAppLogger()->error(__VA_ARGS__)
     #define APP_CRITICAL(...)     ::Core::Logger::GetAppLogger()->critical(__VA_ARGS__)
 #else
-    #define CORE_TRACE(...)       
-    #define CORE_INFO(...)        
-    #define CORE_WARN(...)        
+    #define CORE_TRACE(...)
+    #define CORE_INFO(...)
+    #define CORE_WARN(...)
     #define CORE_ERROR(...)       ::Core::Logger::GetCoreLogger()->error(__VA_ARGS__)
-    #define CORE_CRITICAL(...)    ::Core::Logger::GetCoreLogger()->critical(__VA_ARGS__)
+    #define CORE_CRITICAL(...)    ::Core::Logger::GetCoreLogger()->critical(__VA_ARGS__); DEBUG_BREAK()
 
-    #define APP_TRACE(...)        
-    #define APP_INFO(...)         
-    #define APP_WARN(...)         
+    #define APP_TRACE(...)
+    #define APP_INFO(...)
+    #define APP_WARN(...)
     #define APP_ERROR(...)        ::Core::Logger::GetAppLogger()->error(__VA_ARGS__)
-    #define APP_CRITICAL(...)     ::Core::Logger::GetAppLogger()->critical(__VA_ARGS__)
+    #define APP_CRITICAL(...)     ::Core::Logger::GetAppLogger()->critical(__VA_ARGS__); DEBUG_BREAK()
 #endif
 
 #ifdef CORE_PLATFORM_WINDOWS

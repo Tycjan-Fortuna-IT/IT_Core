@@ -36,5 +36,5 @@ namespace Core {
         constexpr ImU32 BarbiePink = IM_COL32(255, 0, 127, 255);
         constexpr ImU32 Pink = IM_COL32(255, 51, 255, 255);
 
-    };
+    }
 }

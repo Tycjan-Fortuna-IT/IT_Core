@@ -20,9 +20,7 @@ namespace Core {
             m_Specification.Height
         });
 
-        m_Window->SetEventCallback([this]<typename Event>(Event&& event) {
-            OnEvent(std::forward<Event>(event));
-        });
+        m_Window->SetEventCallback(BIND_FN(Application::OnEvent));
 
         m_Window->SetVSync(true);
 

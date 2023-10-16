@@ -1,31 +1,31 @@
 #include "pch.hpp"
-#include "EditorTheme.hpp"
+#include "Theme.hpp"
 
 #include <icons/IconsMaterialDesignIcons.h>
 #include <icons/MaterialDesign.inl>
 
 namespace Core {
-	ImFont* EditorTheme::DefaultFont = nullptr;
-	ImFont* EditorTheme::SmallFont = nullptr;
-	ImFont* EditorTheme::BoldFont = nullptr;
+	ImFont* Theme::DefaultFont = nullptr;
+    ImFont* Theme::SmallFont = nullptr;
+    ImFont* Theme::BoldFont = nullptr;
 
-	static void AddIconFont(float fontSize) {
-		ImGuiIO& io = ImGui::GetIO();
+    static void AddIconFont(float fontSize) {
+        ImGuiIO& io = ImGui::GetIO();
 
-		static constexpr ImWchar icons_ranges[] = { ICON_MIN_MDI, ICON_MAX_MDI, 0 };
-		ImFontConfig iconsConfig;
-		// merge in icons from Font Awesome
-		iconsConfig.MergeMode = true;
-		iconsConfig.PixelSnapH = true;
-		iconsConfig.GlyphOffset.y = 1.0f;
-		iconsConfig.OversampleH = iconsConfig.OversampleV = 1;
-		iconsConfig.GlyphMinAdvanceX = 4.0f;
-		iconsConfig.SizePixels = 12.0f;
+        static constexpr ImWchar icons_ranges[] = { ICON_MIN_MDI, ICON_MAX_MDI, 0 };
+        ImFontConfig iconsConfig;
+        // merge in icons from Font Awesome
+        iconsConfig.MergeMode = true;
+        iconsConfig.PixelSnapH = true;
+        iconsConfig.GlyphOffset.y = 1.0f;
+        iconsConfig.OversampleH = iconsConfig.OversampleV = 1;
+        iconsConfig.GlyphMinAdvanceX = 4.0f;
+        iconsConfig.SizePixels = 12.0f;
 
-		io.Fonts->AddFontFromMemoryCompressedTTF(MaterialDesign_compressed_data, MaterialDesign_compressed_size, fontSize, &iconsConfig, icons_ranges);
-	}
+        io.Fonts->AddFontFromMemoryCompressedTTF(MaterialDesign_compressed_data, MaterialDesign_compressed_size, fontSize, &iconsConfig, icons_ranges);
+    }
 
-	void EditorTheme::SetFont() {
+    void Theme::SetFont() {
 		ImGuiIO& io = ImGui::GetIO();
 		float fontSize = 32.0f;
 		float fontSizeSmall = 12.0f;

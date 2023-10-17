@@ -5,7 +5,6 @@
 
 namespace Core {
 
-    // Color
     class ScopedColor {
     public:
 
@@ -13,23 +12,25 @@ namespace Core {
             ImGui::PushStyleColor(element, color);
         }
 
+        ScopedColor(const ScopedColor& other) = delete;
+        
         ~ScopedColor() { ImGui::PopStyleColor(); }
 
+        ScopedColor& operator=(const ScopedColor& other) = delete;
     };
 
-    // Font
     class ScopedFont {
     public:
 
-        ScopedFont(int index) {
-            ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[index]);
-        }
+        ScopedFont(ImFont* font) { ImGui::PushFont(font); }
+
+        ScopedFont(const ScopedFont& other) = delete;
 
         ~ScopedFont() { ImGui::PopFont(); }
 
+        ScopedFont& operator=(const ScopedFont& other) = delete;
     };
 
-    // Style
     class ScopedStyle {
     public:
 
@@ -38,15 +39,22 @@ namespace Core {
             ImGui::PushStyleVar(element, value);
         }
 
+        ScopedStyle(const ScopedStyle& other) = delete;
+
         ~ScopedStyle() { ImGui::PopStyleVar(); }
+
+        ScopedStyle& operator=(const ScopedStyle& other) = delete;
     }; 
 
-    // ID
     class ScopedID {
     public:
 
         ScopedID(int value) { ImGui::PushID(value); }
 
+        ScopedID(const ScopedID& other) = delete;
+
         ~ScopedID() { ImGui::PopID(); }
+
+        ScopedID& operator=(const ScopedID& other) = delete;
     };
 }

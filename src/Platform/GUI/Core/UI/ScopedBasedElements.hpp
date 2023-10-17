@@ -11,9 +11,9 @@ namespace Core {
 
         ScopedColor(ImGuiCol_ element, ImU32 color) {
             ImGui::PushStyleColor(element, color);
-        };
+        }
 
-        ~ScopedColor() { ImGui::PopStyleColor(); };
+        ~ScopedColor() { ImGui::PopStyleColor(); }
 
     };
 
@@ -23,9 +23,9 @@ namespace Core {
 
         ScopedFont(int index) {
             ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[index]);
-        };
+        }
 
-        ~ScopedFont() { ImGui::PopFont(); };
+        ~ScopedFont() { ImGui::PopFont(); }
 
     };
 
@@ -36,17 +36,17 @@ namespace Core {
         template <typename T>
         ScopedStyle(ImGuiStyleVar_ element, T value) {
             ImGui::PushStyleVar(element, value);
-        };
+        }
 
-        ~ScopedStyle() { ImGui::PopStyleVar(); };
+        ~ScopedStyle() { ImGui::PopStyleVar(); }
     }; 
 
     // ID
     class ScopedID {
     public:
 
-        ScopedID(int value) { ImGui::PushID(value); };
+        ScopedID(int value) { ImGui::PushID(value); }
 
-        ~ScopedID() { ImGui::PopID(); };
+        ~ScopedID() { ImGui::PopID(); }
     };
 }

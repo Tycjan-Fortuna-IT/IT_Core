@@ -13,8 +13,8 @@ project "Core"
     targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
     objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
 
-    pchheader "pch.hpp"
-	pchsource "src/pch.cpp"
+    -- pchheader "pch.hpp"
+	-- pchsource "src/pch.cpp"
 
     defines {
         "CORE_GUI_BUILD",
@@ -93,7 +93,7 @@ project "Core"
         optimize "speed"
 
     group "Dependencies"
-        include "Core/vendor/spdlog"
+        include "Core/vendor/SPDLOG"
         include "Core/vendor/GLAD"
         include "Core/vendor/GLFW"
         include "Core/vendor/ImGui"

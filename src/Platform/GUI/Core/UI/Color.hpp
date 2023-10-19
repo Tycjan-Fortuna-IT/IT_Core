@@ -12,6 +12,9 @@ namespace Core {
         constexpr ImU32 LightGreen = IM_COL32(144, 238, 144, 255); // lightgreen
         constexpr ImU32 LightBlue = IM_COL32(168, 197, 255, 255);
         constexpr ImU32 LightViolet = IM_COL32(229, 204, 255, 255);
+        constexpr ImU32 LightBlack = IM_COL32(64, 64, 64, 255);
+
+        constexpr ImU32 BrightOrange = IM_COL32(255, 200, 100, 255);
 
         constexpr ImU32 Red = IM_COL32(220, 20, 60, 255); // crimson
         constexpr ImU32 Orange = IM_COL32(255, 165, 0, 255);
@@ -37,4 +40,5 @@ namespace Core {
         constexpr ImU32 Pink = IM_COL32(255, 51, 255, 255);
 
     }
+
 }

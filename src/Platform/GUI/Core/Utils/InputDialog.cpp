@@ -1,6 +1,8 @@
 #include "pch.hpp"
 #include "InputDialog.hpp"
 
+#include "Engine/Core/PlatformDetection.hpp"
+
 #include "Platform/GUI/Core/GUIApplication.hpp"
 
 namespace AI {
@@ -29,10 +31,34 @@ namespace AI {
 
         return std::string();
     }
-#elif CORE_PLATFORM_LINUX
-#error "TODO: Implement InputDialog::OpenFileDialog() for Linux!"
-    std::string InputDialog::OpenFileDialog(const char *filter) {
-               return std::string();
-    }
+#elif defined(CORE_PLATFORM_LINUX)
+    #include <gtk/gtk.h>
+
+    std::string InputDialog::OpenFileDialog([[maybe_unused]] const char* filter)
+	{
+		GtkWidget* dialog;
+		int res;
+
+		if (!gtk_init_check(NULL, NULL) )
+		{
+			return "";
+		}
+
+		dialog = gtk_file_chooser_dialog_new("Open File", nullptr, GTK_FILE_CHOOSER_ACTION_OPEN, "_Cancel", GTK_RESPONSE_CANCEL, "_Open", GTK_RESPONSE_ACCEPT, nullptr);
+
+		res = gtk_dialog_run(GTK_DIALOG(dialog));
+		std::string ret;
+		if (res == GTK_RESPONSE_ACCEPT)
+		{
+			char* filename;
+			GtkFileChooser* chooser = GTK_FILE_CHOOSER(dialog);
+			filename = gtk_file_chooser_get_filename(chooser);
+			ret = filename;
+			g_free(filename);
+		}
+
+		gtk_widget_destroy(dialog);
+		return ret;
+	}
 #endif
 }
